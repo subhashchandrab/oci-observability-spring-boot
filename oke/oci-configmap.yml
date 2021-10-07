@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oci-config
+data:
+  oci-config.json: >-
+    { 
+    "OCI_CONFIG_PATH": "", 
+    "OCI_PROFILE_NAME": "DEFAULT",
+    "OCI_METRICS_COMPARTMENT_ID": "", 
+    "OCI_METRICS_NAMESPACE": "",
+    "OCI_METRICS_PUSH_INTERVAL": "" 
+    }

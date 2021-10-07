@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: oke-sb-demo
+  name: oke-sb-demo
+spec:
+  selector:
+    matchLabels:
+      app: oke-sb-demo
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: oke-sb-demo
+  spec:
+    containers:
+      - image: <your image URL>
+        name: oke-sb-demo
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: oke-sb-demo
+            containerPort: 8080
+            protocol: TCP
+        env:
+          - name: SPRING_APPLICATION_JSON
+            valueFrom:
+              configMapKeyRef:
+                name: spring-config
+                key: dev-config.json
+    imagePullSecrets:
+      name: <your-secret-name>
