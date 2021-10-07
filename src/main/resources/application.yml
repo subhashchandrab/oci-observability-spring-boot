@@ -21,12 +21,12 @@ endpoints:
 oci:
   useInstancePrincipal: false
   #OCI config file path
-  ociConfigPath: C:\Users\SBUDDE\.oci\config
+  ociConfigPath: ${OCI_CONFIG_PATH}
   #OCI profile name
-  ociProfile: DEFAULT
+  ociProfile: ${OCI_PROFILE_NAME}
   #OCID of the compartment where the metrics need to be pushed
-  metricsCompartmentOcid: ocid1.compartment.oc1..aaaaaaaaehvvkog4ms6ctdwpckbhrxnjqhhbt6cqkbpiafuv7cyzoy77slxa
+  metricsCompartmentOcid: ${OCI_METRICS_COMPARTMENT_ID}
   #namespace to be created in OCI for the application metrics
-  metricsNamespace: oke_springboot_app
+  metricsNamespace: ${OCI_METRICS_NAMESPACE}
   # Time interval for pushing the metrics to OCI. The value is in milliseconds
-  metricsPushInterval: 10000
+  metricsPushInterval: ${OCI_METRICS_PUSH_INTERVAL}
