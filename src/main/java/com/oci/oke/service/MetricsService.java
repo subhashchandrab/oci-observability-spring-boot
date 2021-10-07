@@ -68,7 +68,8 @@ public class MetricsService {
         Map<String, String> metricMetadataMap = new HashMap<String, String>();
         metricMetadataMap.put("unit", "time_ms");  
         metricMetadataMap.put("displayName", "Process_Latency_ms");   
-        Map<String, String> metricDimensionMap = Map.of("appName", "oke-springboot");
+        Map<String, String> metricDimensionMap = new HashMap<String, String>();
+        metricDimensionMap.put("appName", "oke-springboot");
         MetricDataDetails loadMetricDataDetails = MetricDataDetails.builder()
                 .compartmentId(this.ociConfig.getMetricsCompartmentOcid())
                 .namespace(this.ociConfig.getMetricsNamespace()).dimensions(metricDimensionMap)
