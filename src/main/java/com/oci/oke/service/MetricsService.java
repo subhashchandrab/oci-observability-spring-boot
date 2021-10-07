@@ -74,7 +74,7 @@ public class MetricsService {
                 .compartmentId(this.ociConfig.getMetricsCompartmentOcid())
                 .namespace(this.ociConfig.getMetricsNamespace()).dimensions(metricDimensionMap)
                 .metadata(metricMetadataMap).resourceGroup("oke-app-metrics").name(metricName)
-                .datapoints(List.of(dataPoint)).build();
+                .datapoints(new ArrayList<>(Arrays.asList(new Datapoint[]{dataPoint}))).build();
         System.out.println("Collected metrics: " + dataPoint);
         return loadMetricDataDetails;
     }
