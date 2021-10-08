@@ -41,7 +41,7 @@ public class MetricsService {
                     this.ociConfig.getOciProfile());
         }*/
         monitoringClient = MonitoringClient.builder()
-                .endpoint("https://telemetry-ingestion.us-phoenix-1.oraclecloud.com").build(provider);
+                .endpoint("https://telemetry-ingestion.eu-frankfurt-1.oraclecloud.com").build(provider);
     }
 
     public void publishMetrics() {
