@@ -24,8 +24,8 @@ spec:
           - name: SPRING_APPLICATION_JSON
             valueFrom:
               configMapKeyRef:
-                name: oci-metrics-config-map
-                key: oci-metrics-config.json    
+                name: oci-config
+                key: oci-config.json    
       imagePullSecrets:
         - name: <Secret Name>
 ---
