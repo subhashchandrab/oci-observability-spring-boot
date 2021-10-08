@@ -33,13 +33,13 @@ public class MetricsService {
     public MetricsService(ApplicationConfigProperties ociConfig) throws IOException {
 
         this.ociConfig = ociConfig;
-        BasicAuthenticationDetailsProvider provider;
-        if (ociConfig.getUseInstancePrincipal()) {
-            provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build();
+        BasicAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build();
+        /*if (ociConfig.getUseInstancePrincipal()) {
+            provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build(); 
         } else {
             provider = new ConfigFileAuthenticationDetailsProvider(this.ociConfig.getOciConfigPath(),
                     this.ociConfig.getOciProfile());
-        }
+        }*/
         monitoringClient = MonitoringClient.builder()
                 .endpoint("https://telemetry-ingestion.us-phoenix-1.oraclecloud.com").build(provider);
     }
