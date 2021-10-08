@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: oke-sb-demo
   name: oke-sb-demo
 spec:
   selector:
@@ -13,9 +11,9 @@ spec:
     metadata:
       labels:
         app: oke-sb-demo
-  spec:
-    containers:
-      - image: <your image URL>
+    spec:
+      containers:
+      - image: <Image Location>
         name: oke-sb-demo
         imagePullPolicy: IfNotPresent
         ports:
@@ -26,7 +24,25 @@ spec:
           - name: SPRING_APPLICATION_JSON
             valueFrom:
               configMapKeyRef:
-                name: spring-config
-                key: dev-config.json
-    imagePullSecrets:
-      name: <your-secret-name>
+                name: oci-metrics-config-map
+                key: oci-metrics-config.json    
+      imagePullSecrets:
+        - name: <Secret Name>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oke-sb-lb
+  labels:
+    app: oke-sb-demo
+  annotations:
+    service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+  selector:
+    app: oke-sb-demo
+      
