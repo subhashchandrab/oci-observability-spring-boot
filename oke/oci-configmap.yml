@@ -4,10 +4,11 @@ metadata:
   name: oci-config
 data:
   oci-config.json: >-
-    { 
-    "OCI_CONFIG_PATH": "", 
-    "OCI_PROFILE_NAME": "DEFAULT",
-    "OCI_METRICS_COMPARTMENT_ID": "", 
-    "OCI_METRICS_NAMESPACE": "",
-    "OCI_METRICS_PUSH_INTERVAL": "" 
+    {
+    "OCI_USE_INSTANCE_PRINCIPAL": true, #Set as true when deploying the application to OKE. You can set it as false when running this as a standalone application
+    "OCI_CONFIG_PATH": "~/.oci/config", # Path to the OCI config file location which is usually ~/.oci/config
+    "OCI_PROFILE_NAME": "DEFAULT", # OCI config profiel name
+    "OCI_METRICS_COMPARTMENT_ID": "", # Compartment OCID to which the metrics should be exported
+    "OCI_METRICS_NAMESPACE": "oke_springboot_app", # Any user defined value and a namespace will be created in OCI with this name for storing the metrics exported by the current application.
+    "OCI_METRICS_PUSH_INTERVAL": "https://telemetry-ingestion.eu-frankfurt-1.oraclecloud.com" ## Refer Monitoring API -> Endpoints in the page https://docs.oracle.com/en-us/iaas/api/ for locating the metrics endpoint URL for your region
     }
