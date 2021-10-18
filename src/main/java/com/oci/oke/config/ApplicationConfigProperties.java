@@ -8,60 +8,69 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @ConfigurationProperties(prefix = "oci")
 public class ApplicationConfigProperties {
-    private Boolean useInstancePrincipal;
-    private String ociConfigPath;
-    private String ociProfile;
-    private String metricsCompartmentOcid;
-    private String metricsNamespace;
-    private int metricsPushInterval;
 
+	private Boolean useInstancePrincipal;
+	private String ociConfigPath;
+	private String ociProfile;
+	private String metricsCompartmentOcid;
+	private String metricsNamespace;
+	private String metricsEndpoint;
+	private int metricsPushInterval;
 
-    public String getMetricsNamespace() {
-        return metricsNamespace;
-    }
+	public String getMetricsEndpoint() {
+		return metricsEndpoint;
+	}
 
-    public int getMetricsPushInterval() {
-        return metricsPushInterval;
-    }
+	public void setMetricsEndpoint(String metricsEndpoint) {
+		this.metricsEndpoint = metricsEndpoint;
+	}
 
-    public void setMetricsPushInterval(int metricsPushInterval) {
-        this.metricsPushInterval = metricsPushInterval;
-    }
+	public String getMetricsNamespace() {
+		return metricsNamespace;
+	}
 
-    public void setMetricsNamespace(String metricsNamespace) {
-        this.metricsNamespace = metricsNamespace;
-    }
+	public int getMetricsPushInterval() {
+		return metricsPushInterval;
+	}
 
-    public String getMetricsCompartmentOcid() {
-        return metricsCompartmentOcid;
-    }
+	public void setMetricsPushInterval(int metricsPushInterval) {
+		this.metricsPushInterval = metricsPushInterval;
+	}
 
-    public void setMetricsCompartmentOcid(String metricsCompartmentOcid) {
-        this.metricsCompartmentOcid = metricsCompartmentOcid;
-    }
+	public void setMetricsNamespace(String metricsNamespace) {
+		this.metricsNamespace = metricsNamespace;
+	}
 
-    public String getOciConfigPath() {
-        return ociConfigPath;
-    }
+	public String getMetricsCompartmentOcid() {
+		return metricsCompartmentOcid;
+	}
 
-    public void setOciConfigPath(String ociConfigPath) {
-        this.ociConfigPath = ociConfigPath;
-    }
+	public void setMetricsCompartmentOcid(String metricsCompartmentOcid) {
+		this.metricsCompartmentOcid = metricsCompartmentOcid;
+	}
 
-    public String getOciProfile() {
-        return ociProfile;
-    }
+	public String getOciConfigPath() {
+		return ociConfigPath;
+	}
 
-    public void setOciProfile(String ociProfile) {
-        this.ociProfile = ociProfile;
-    }
+	public void setOciConfigPath(String ociConfigPath) {
+		this.ociConfigPath = ociConfigPath;
+	}
 
-    public Boolean getUseInstancePrincipal() {
-        return useInstancePrincipal;
-    }
+	public String getOciProfile() {
+		return ociProfile;
+	}
 
-    public void setUseInstancePrincipal(Boolean useInstancePrincipal) {
-        this.useInstancePrincipal = useInstancePrincipal;
-    }        
-    
+	public void setOciProfile(String ociProfile) {
+		this.ociProfile = ociProfile;
+	}
+
+	public Boolean getUseInstancePrincipal() {
+		return useInstancePrincipal;
+	}
+
+	public void setUseInstancePrincipal(Boolean useInstancePrincipal) {
+		this.useInstancePrincipal = useInstancePrincipal;
+	}
+
 }
