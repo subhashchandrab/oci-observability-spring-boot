@@ -37,12 +37,12 @@ public class MetricsService {
 		BasicAuthenticationDetailsProvider provider = null;
 		if(this.ociConfig.getUseInstancePrincipal()) {
 			System.out.println("Using the instance principal for OCI authentication");
-			provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build();;	
+			provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build();
 		}
 		else {
 			try {
 				System.out.println("Using the config profile for OCI authentication");
-				provider = new ConfigFileAuthenticationDetailsProvider("~/.oci/config", "DEFAULT");
+				provider = new ConfigFileAuthenticationDetailsProvider(ociConfig.getOciConfigPath(), ociConfig.getOciProfile());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
