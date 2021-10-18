@@ -18,7 +18,7 @@ endpoints:
 
 #The following properties are needed for pushing the application metrics to OCI 
 oci:
-  useInstancePrincipal: true
+  useInstancePrincipal: ${OCI_USE_INSTANCE_PRINCIPAL}
   #OCI config file path
   ociConfigPath: ${OCI_CONFIG_PATH}
   #OCI profile name
