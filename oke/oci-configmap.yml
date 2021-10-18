@@ -10,5 +10,6 @@ data:
     "OCI_PROFILE_NAME": "DEFAULT", # OCI config profiel name
     "OCI_METRICS_COMPARTMENT_ID": "", # Compartment OCID to which the metrics should be exported
     "OCI_METRICS_NAMESPACE": "oke_springboot_app", # Any user defined value and a namespace will be created in OCI with this name for storing the metrics exported by the current application.
-    "OCI_METRICS_PUSH_INTERVAL": "https://telemetry-ingestion.eu-frankfurt-1.oraclecloud.com" ## Refer Monitoring API -> Endpoints in the page https://docs.oracle.com/en-us/iaas/api/ for locating the metrics endpoint URL for your region
+    "OCI_METRICS_PUSH_INTERVAL": "10000" # The time interval in milliseconds for pushing the metrics to OCI
+    "OCI_METRICS_ENDPOINT": "https://telemetry-ingestion.eu-frankfurt-1.oraclecloud.com" # Refer Monitoring API -> Endpoints in the page https://docs.oracle.com/en-us/iaas/api/ for locating the metrics endpoint URL for your region
     }
