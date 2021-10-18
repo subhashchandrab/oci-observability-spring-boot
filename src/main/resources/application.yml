@@ -29,3 +29,5 @@ oci:
   metricsNamespace: ${OCI_METRICS_NAMESPACE}
   # Time interval for pushing the metrics to OCI. The value is in milliseconds
   metricsPushInterval: ${OCI_METRICS_PUSH_INTERVAL}
+  # Metrics Target Region Endpoint URL
+  metricsEndpoint: ${OCI_METRICS_ENDPOINT}
