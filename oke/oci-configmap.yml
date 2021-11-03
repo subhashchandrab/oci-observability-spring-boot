@@ -10,6 +10,6 @@ data:
     "OCI_PROFILE_NAME": "DEFAULT", 
     "OCI_METRICS_COMPARTMENT_ID": "", 
     "OCI_METRICS_NAMESPACE": "oke_springboot_app", 
-    "OCI_METRICS_PUSH_INTERVAL": "10000" 
+    "OCI_METRICS_PUSH_INTERVAL": "10000",
     "OCI_METRICS_ENDPOINT": "https://telemetry-ingestion.eu-frankfurt-1.oraclecloud.com" 
     }
