@@ -11,23 +11,51 @@ spec:
     metadata:
       labels:
         app: oke-sb-demo
+      annotations:
+        provider: oracle
     spec:
       containers:
-      - image: <Image Location>
+      - image: phx.ocir.io/sehubemeaprod/sbudde/oke-sb:latest
         name: oke-sb-demo
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
           - name: oke-sb-demo
             containerPort: 8080
             protocol: TCP
+        volumeMounts:
+          - name: apm-attributes-k8s
+            mountPath: /etc/apm-attributes-k8s
+
         env:
           - name: SPRING_APPLICATION_JSON
             valueFrom:
               configMapKeyRef:
                 name: oci-config
-                key: oci-config.json    
+                key: oci-config.json  
+          - name: APM_ATTRIBUTES_K8S_POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: APM_ATTRIBUTES_K8S_NAMESPACE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: APM_ATTRIBUTES_K8S_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+      volumes:
+        - name: apm-attributes-k8s
+          downwardAPI:
+           items:
+             - path: "labels"
+               fieldRef:
+                 fieldPath: metadata.labels
+             - path: "annotations"
+               fieldRef:
+                 fieldPath: metadata.annotations
       imagePullSecrets:
-        - name: <Secret Name>
+        - name: ocirsecret
 ---
 apiVersion: v1
 kind: Service
