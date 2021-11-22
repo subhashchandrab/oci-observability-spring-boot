@@ -1,9 +1,11 @@
 server:
   port: 8080
+  tomcat.mbeanregistry.enabled: true
 
 spring:
   application:
     name: sample-springboot-app
+    jmx.enabled: true
 
 ribbon:
   ServerListRefreshInterval: 1000
