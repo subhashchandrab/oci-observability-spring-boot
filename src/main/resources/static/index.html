@@ -1,1 +1,54 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OCI APM Demo</title>
+</head>
+<body>
+ <script>
+    window.apmrum || (apmrum = {});
+    window.apmrum.serviceName='apm_service';
+    window.apmrum.webApplication='sample-springboot-app';  //optional            
+    window.apmrum.ociDataUploadEndpoint=''; //playground
+    window.apmrum.OracleAPMPublicDataKey='';
+    apmrum.username = 'oke-sb-demo-user';
+    apmrum.trackScreenText=true;
+    apmrum.udfAttributeDt = function()
+    {     
+        // return desired value of page title
+        return "Custom OKE Home Page";
+    };
+    apmrum.getElmLabelFn = function(e)
+    {
+        // return desired value for element
+        return "elm: "+e.tagName+"["+e.id+"]"; 
+    };
+    apmrum.udfAttribute2 = function()
+    {
+        // return desired value of attribute 2
+        return "Attribute value 2"; 
+    };    
+    
+    function invokeRestApi(){
+    	var xhttp = new XMLHttpRequest();
+    	xhttp.onreadystatechange = function () {
+    		if (this.readyState == 4 && this.status == 200) {
+    			console.log("Rest API invocation successful");
+    		}
+    	}
+    	var restUrl = 'http://localhost:8080/showMessage';
+    	xhttp.open("GET", restUrl, false);
+    	xhttp.send();
+    }
+ </script>
+ <script async crossorigin="anonymous" src="https://aaaac7iimtmhuaaaaaaaaaatcu.apm-agt.us-phoenix-1.oci.oraclecloud.com/static/jslib/apmrum.min.js"></script>
+<div>
+  <h1>Welcome to Spring Boot Demo with APM Integration on OCI!</h1>
+</div>
+<div id="btns">
+	<button type="submit"  onclick="invokeRestApi()">Invoke Rest API for testing APM Trace</button>
+</div>
+
+</body>
+</html>
